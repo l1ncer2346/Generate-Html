@@ -70,90 +70,90 @@ class Generator():
 					is_first_eterate = False
 					if body[i][0].forename == 'img':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0} src = \'{1}\'>\n'.format(body[i][0].forename, body[i][0].src))
+							data.insert(data.index('<body>\n')+1, '\n{2}<{0} src = \'{1}\'>\n'.format(body[i][0].forename, body[i][0].src, (int(div_nesting) + 1)*'\t'))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div>\n')
 						div_nesting -= 1
 					elif body[i][0].forename == 'a':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0} href = \'{1}\'>ClickMe</{0}>\n'.format(body[i][0].forename, body[i][0].href))
+							data.insert(data.index('<body>\n')+1, '\n{2}<{0} href = \'{1}\'>ClickMe</{0}>\n'.format(body[i][0].forename, body[i][0].href, (int(div_nesting) + 1)*'\t'))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div>\n')
 						div_nesting -= 1
 					elif body[i][0].forename == 'hr':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n</{0}>\n'.format(body[i][0].forename))
+							data.insert(data.index('<body>\n')+1, '\n{1}</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div\n>')
 						div_nesting -= 1
 				if div_nesting == 0 and is_first_eterate == True:
 					if body[i][0].forename == 'img':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0} src = \'{1}\'>\n'.format(body[i][0].forename, body[i][0].src))
+						data.insert(data.index('<body>\n')+1, '\n{2}<{0} src = \'{1}\'>\n'.format(body[i][0].forename, body[i][0].src, (int(div_nesting) + 1)*'\t'))
 					elif body[i][0].forename == 'a':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0} href = \'{1}\'>ClickMe</{0}>\n'.format(body[i][0].forename, body[i][0].href))
+						data.insert(data.index('<body>\n')+1, '\n{2}<{0} href = \'{1}\'>ClickMe</{0}>\n'.format(body[i][0].forename, body[i][0].href, (int(div_nesting) + 1)*'\t'))
 					elif body[i][0].forename == 'hr':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n</{0}>\n'.format(body[i][0].forename))
+						data.insert(data.index('<body>\n')+1, '\n{1}</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 			else:
 				div_nesting = body[i][1]
 				while div_nesting >= 1:
 					is_first_eterate = False
 					if body[i][0].forename == 'div':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}></{0}>\n'.format(body[i][0].forename))
+							data.insert(data.index('<body>\n')+1, '\n{1}<{0}></{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div>\n')
 						div_nesting -= 1
 					elif body[i][0].forename == 'button':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, '{1}\n<{0}>ClickMe</{0}>\n'.format(body[i][0].forename, ((int(div_nesting) + 1)*'\t')))
+							data.insert(data.index('<body>\n')+1, '\n{1}<{0}>ClickMe</{0}>\n'.format(body[i][0].forename, ((int(div_nesting) + 1)*'\t')))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div>\n')
 						div_nesting -= 1
 					elif body[i][0].forename == 'input':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0} type = \'{1}\'>Some Text</{0}>\n'.format(body[i][0].forename))
+							data.insert(data.index('<body>\n')+1, '\n{2}<{0} type = \'{1}\'>Some Text</{0}>\n'.format(body[i][0].forename, body[i][0].type, (int(div_nesting) + 1)*'\t'))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div>\n')
 						div_nesting -= 1
 					elif body[i][0].forename == 'h1':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}>Some Text</{0}>\n'.format(body[i][0].forename))
+							data.insert(data.index('<body>\n')+1, '\n{1}<{0}>Some Text</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div>\n')
 						div_nesting -= 1
 					elif body[i][0].forename == 'i':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}>Some Text</{0}>\n'.format(body[i][0].forename))
+							data.insert(data.index('<body>\n')+1, '\n{1}<{0}>Some Text</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div>\n')
 						div_nesting -= 1
 					elif body[i][0].forename == 'p':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}>Some Text</{0}>\n'.format(body[i][0].forename))
+							data.insert(data.index('<body>\n')+1, '\n{1}<{0}>Some Text</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div>\n')
 						div_nesting -= 1
 					elif body[i][0].forename == 'strong':
 						if div_nesting == body[i][1]:
-							data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}>Some Text</{0}>\n'.format(body[i][0].forename))
+							data.insert(data.index('<body>\n')+1, '\n{1}<{0}>Some Text</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 						data.insert(data.index('<body>\n')+1, int(div_nesting)*'\t'+'<div>')
 						data.insert(data.index('</body>\n'), int(div_nesting)*'\t'+'</div>\n')
 						div_nesting -= 1
 				if div_nesting == 0 and is_first_eterate == True:
 					if body[i][0].forename == 'div':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}></{0}>\n'.format(body[i][0].forename))
+						data.insert(data.index('<body>\n')+1, '\n{1}<{0}></{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 					elif body[i][0].forename == 'button':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}>ClickMe</{0}>\n'.format(body[i][0].forename))
+						data.insert(data.index('<body>\n')+1, '\n{1}<{0}>ClickMe</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 					elif body[i][0].forename == 'input':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0} type = \'{1}\'>Some Text</{0}>\n'.format(body[i][0].forename, body[i][0].type))
+						data.insert(data.index('<body>\n')+1, '\t'+'\n{2}<{0} type = \'{1}\'>Some Text</{0}>\n'.format(body[i][0].forename, body[i][0].type, (int(div_nesting) + 1)*'\t'))
 					elif body[i][0].forename == 'h1':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}>Some Text</{0}>\n'.format(body[i][0].forename))
+						data.insert(data.index('<body>\n')+1, '\t'+'\n{1}<{0}>Some Text</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 					elif body[i][0].forename == 'i':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}>Some Text</{0}>\n'.format(body[i][0].forename))
+						data.insert(data.index('<body>\n')+1, '\t'+'\n{1}<{0}>Some Text</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 					elif body[i][0].forename == 'p':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}>Some Text</{0}>\n'.format(body[i][0].forename))
+						data.insert(data.index('<body>\n')+1, '\t'+'\n{1}<{0}>Some Text</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 					elif body[i][0].forename == 'strong':
-						data.insert(data.index('<body>\n')+1, (int(div_nesting) + 1)*'\t'+'\n<{0}>Some Text</{0}>\n'.format(body[i][0].forename))
+						data.insert(data.index('<body>\n')+1, '\n{1}<{0}>Some Text</{0}>\n'.format(body[i][0].forename, (int(div_nesting) + 1)*'\t'))
 		file.writelines(data)
 		file.close()
 
@@ -220,7 +220,7 @@ class UserManager():
 				meta_content = input('Enter \'content\' parametr: ')
 				meta_eterate.append([meta_charset.lower(), meta_name.lower(), meta_content.lower()])
 		print('\n')		
-		count_link_tags = input('How many link tags will be in page?')
+		count_link_tags = input('How many link tags will be in page? ')
 		try:
 			count_link_tags = int(count_link_tags)
 		except:				
@@ -319,7 +319,7 @@ class img():
 
 	def __init__(self, src = 'media/img.png', forename = 'img'):
 		self.src = src
-		self.img = img
+		self.forename = img
 
 class a():
 
